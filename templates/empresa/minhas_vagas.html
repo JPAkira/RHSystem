@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    {% include 'partials/_menu.html' %}
+    {% include 'partials/_alertas.html' %}
+    <div class="container">
+        <h1 class="text-center">Minhas Vagas</h1>
+    </div>
+
+    <div class="d-grid gap-3">
+        <div class="container">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{% url 'criar_vaga' %}"><button class="btn btn-primary" type="button">Abrir nova vaga</button></a>
+            </div>
+        </div>
+
+        <div class="container">
+            <form action="{% url 'buscar_vagas_empresa' %}" method="post">
+              {% csrf_token %}
+                <div class="input-group">
+                    <input type="search" class="form-control rounded" placeholder="Cargo / Empresa" aria-label="Search"
+                    aria-describedby="search-addon" id="buscar" name="buscar" />
+                    <button type="submit" class="btn btn-outline-primary">Procurar</button>
+                </div>
+            </form>
+        </div>
+
+        {% if vagas %}
+        {% for vaga in vagas %}
+        <div class="container">
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ vaga.cargo }}</h5>
+                    <h6>Faixa Salárial: {{ vaga.faixa_salarial }}</h6>
+                    <h6>Descrição:</h6>
+                  <ul>
+                    <li><p class="card-text">{{ vaga.descricao }}</p></li>
+                  </ul>
+                  <a href="{% url 'vaga_empresa' vaga.id %}" class="btn btn-primary">Ver detalhes e candidatos</a>
+                  <a href="{% url 'editar_vaga' vaga.id %}" class="btn btn-warning">Editar</a>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ vaga.id }}">
+                  Apagar
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{ vaga.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Você deseja realmente apagar a vaga?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Não terá como recuperar
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <a type="button" class="btn btn-danger" href="{% url 'deletar_vaga' vaga.id %}">Apagar</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% endif %}
+    </div>
+</body>

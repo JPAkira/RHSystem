@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da vaga</title>
+</head>
+<body style="background-image: linear-gradient(to right bottom, #d1e0f6, #cdd4e5, #c7c9d5, #bfbfc5, #b5b5b5);">
+    {% include 'partials/_menu.html' %}
+    {% include 'partials/_alertas.html' %}
+    <div class="container" style="margin-top: 25px;">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <div class="d-grid gap-3">
+                    <div class="container">
+                        <h1 class="text-center">{{ vaga.cargo }}</h1>
+                    </div>
+                </div>
+              <h5 class="card-title">{{ vaga.cargo }}</h5>
+                <h6>Faixa Salárial: {{ vaga.faixa_salarial }}</h6>
+                <h6>Empresa: {{ vaga.empresa.first_name }}</h6>
+                <h5 class="card-title">Descrição:</h5>
+              <ul>
+                <li><p class="card-text">{{ vaga.descricao }}</p></li>
+              </ul>
+              {% if requisitos %}
+              <h5 class="card-title">Requisitos:</h5>
+              <ul>
+              {% for requisito in requisitos %}
+                <li><p class="card-text">{{ requisito.requisito }}</p></li>
+              {% endfor %}
+              </ul>
+              {% endif %}
+              {% if requisitos_desejavel %}
+              <h5 class="card-title">Desejável:</h5>
+              <ul>
+              {% for requisito in requisitos_desejavel %}
+                <li><p class="card-text">{{ requisito.desejavel }}</p></li>
+              {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 20px; margin-bottom: 30px">
+        <div class="d-grid gap-2">
+            <a class="btn btn-primary" type="button" href="{% url 'aplicacao' vaga.id %}">Aplicar para vaga</a>
+        </div>
+    </div>
+
+
+</body>
+</html>

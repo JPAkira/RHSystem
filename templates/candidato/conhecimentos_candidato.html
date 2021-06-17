@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    {% include 'partials/_menu.html' %}
+    <div class="container">
+
+        <div class="container" style="margin-top: 30px; margin-bottom: 30px">
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                  <h5 class="card-title">Sobre os requisitos a quanto tempo você trabalha na área:</h5>
+                    <div class="container" style="margin: 20px;">
+                        <h6>Requisitos:</h6>
+                        {% for requisito in requisitos %}
+                      <ul>
+                        <li><p class="card-text">{{ requisito.requisito }}</p></li>
+                      </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="{% url 'conhecimentos_candidato' aplicacao.id %}" method="post">
+          {% csrf_token %}
+        <div class="d-flex justify-content-evenly" style="flex-wrap: wrap; margin-bottom: 20px">
+            <input class="form-check-input" type="radio" name="nivel_conhecimentos" id="item1" value="0" checked>
+            <label for="item1">Sem experiência</label>
+            <input type="radio" name="nivel_conhecimentos" id="item2" value="1">
+            <label for="item2">1 Ano ou mais</label>
+            <input type="radio" name="nivel_conhecimentos" id="item3" value="2">
+            <label for="item3">1 a 2 Anos</label>
+            <input type="radio" name="nivel_conhecimentos" id="item4" value="3">
+            <label for="item3">3 Anos ou mais</label>
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Continuar</button>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

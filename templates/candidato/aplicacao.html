@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicar para vaga</title>
+</head>
+<body>
+
+    {% include 'partials/_menu.html' %}
+    {% include 'partials/_alertas.html' %}
+
+
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 100%; max-width: 640px;">
+                <div class="card-body">
+                    <div class="d-grid gap-3">
+                        <div class="container">
+                            <h1 class="text-center">Aplicar para vaga: {{ vaga.cargo}}</h1>
+                        </div>
+                        <form action="{% url 'aplicacao' vaga.id %}" method="post">
+                          {% csrf_token %}
+                          <div class="d-grid gap-2">
+                              <div class="form-group">
+                                <label for="faixa_salarial" class="form-label">Pretenção Salarial</label>
+                                <select class="form-select" aria-label="Default select example" id="faixa_salarial" name="faixa_salarial">
+                                    <option selected value="0">Selecione uma opção</option>
+                                    <option value="Até 1.000">Até 1.000</option>
+                                    <option value="De 1.000 a 2.000">De 1.000 a 2.000</option>
+                                    <option value="De 2.000 a 3.000">De 2.000 a 3.000</option>
+                                    <option value="Acima de 3.000">Acima de 3.000</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="escolaridade" class="form-label">Escolaridade</label>
+                                <select class="form-select" aria-label="Default select example" id="escolaridade" name="escolaridade">
+                                    <option selected value="0">Selecione uma opção</option>
+                                    <option value="Ensino fundamental">Ensino fundamental</option>
+                                    <option value="Ensino médio">Ensino médio</option>
+                                    <option value="Tecnólogo">Tecnólogo</option>
+                                    <option value="Ensino superior">Ensino superior</option>
+                                    <option value="Pós / MBA / Mestrado">Pós / MBA / Mestrado</option>
+                                    <option value="Doutorado">Doutorado</option>
+                                </select>
+                              </div>
+                              <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="submit">Continuar</button>
+                              </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
