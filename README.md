@@ -1,26 +1,26 @@
 # RHSystem
- 
-#Criar pasta do projeto 
+<h3>Criar pasta do projeto</h3>
 
-Criar a pasta onde você deseja que fique todos os arquivos do projeto
+<h5>Criar a pasta onde você deseja que fique todos os arquivos do projeto</h5>
 
-#Criar Venv
-
+<h3>Criar Venv</h3>
+```sh
 python -m venv venv
+```
 
-#Ativar Venv
+<h3>Ativar Venv</h3>
 
 .\venv\Scripts\Activate
 
-#Baixar o repositorio
+<h3>Baixar o repositorio</h3>
 
 colocar na pasta onde fica o projeto
 
-#Instalar os requirements.txt
+<h3>Instalar os requirements.txt</h3>
 
 pip install -r requirements.txt
 
-#Configurar o banco de dados
+<h3>Configurar o banco de dados</h3>
 
 setup/settings.py
 
@@ -34,15 +34,15 @@ DATABASES = {
     }
 }
 
-#Criar os dados no banco
+<h3>Criar os dados no banco</h3>
 
 python manage.py migrate
 
-#Iniciar o servidor
+<h3>Iniciar o servidor</h3>
 
 python manage.py runserver
 
-#Executar teste
+<h3>Executar teste</h3>
 
 python manage.py test
 
