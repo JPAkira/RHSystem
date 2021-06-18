@@ -49,3 +49,13 @@ colocar na pasta onde fica o projeto
     ```
     python manage.py test
     ```
+7. Para criar um usuário de empresa
+Registre na área de empresa
+8. Crie um superuser no django
+    ```
+    python manage.py createsuperuser
+    ```
+9. Logue no usuário superuser no painel django admin
+www.linkapp/admin
+
+10. Entre nos usuários e adicione permissão empresa para o usuário criado
