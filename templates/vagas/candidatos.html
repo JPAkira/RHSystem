@@ -36,7 +36,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ candidato.candidato.first_name }}</h5>
                 <div class="container" style="margin: 20px;">
-                    <h6>Pretenção Salárial: {{ candidato.faixa_salarial }}</h6>
+                    <h6>Pretenção Salárial: {{ candidato.pretencao_salarial }}</h6>
                     <h6>Escolaridade: {{ candidato.escolaridade }}</h6>
                     <h6>Data de aplicação: {{ candidato.data_criacao }}</h6>
                     <div class="container">
@@ -51,7 +51,7 @@
                                 labels: ['not Match', 'Match'],
                                 datasets: [{
                                     label: 'Match com a empresa',
-                                    data: [(100 - (({{ candidato.score }}/8) * 100)), (({{ candidato.score }}/8) * 100)],
+                                    data: [(100 - (({{ candidato.score }}/{{max}}) * 100)), (({{ candidato.score }}/{{max}}) * 100)],
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',

@@ -30,7 +30,7 @@
                                 labels: ['not Match', 'Match'],
                                 datasets: [{
                                     label: 'Match com a empresa',
-                                    data: [(100 - (({{ candidato.score }}/8) * 100)), (({{ candidato.score }}/8) * 100)],
+                                    data: [(100 - (({{ candidato.score }}/{{max}}) * 100)), (({{ candidato.score }}/{{max}}) * 100)],
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',

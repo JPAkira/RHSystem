@@ -120,6 +120,10 @@ def conhecimentos_candidato(request, aplicacao_id):
 
     requisitos = Requisitos.objects.order_by('vaga').filter(vaga=vaga.id)
 
+    if not requisitos:
+        return redirect('index')
+
+
     dados = {
         'vaga': vaga,
         'aplicacao': aplicacao,
@@ -140,10 +144,14 @@ def conhecimentos_candidato_desejavel(request, aplicacao_id):
     if not (autenticacao(request)):
         return redirect('candidato_login')
 
+
     aplicacao = get_object_or_404(Aplicacao, pk=aplicacao_id)
     vaga = get_object_or_404(Vaga, pk=aplicacao.vaga.id)
 
     desejavel = Desejavel.objects.order_by('vaga').filter(vaga=vaga.id)
+
+    if not desejavel:
+        return redirect('index')
 
     dados = {
         'vaga': vaga,
